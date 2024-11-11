@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700|Exo:100,200,300,400,500,600,700');
 
+/* header */
 header {
     margin: 0;
+}
+
+.heading {
+    margin-left: 50px;
 }
 
 .logo {
@@ -13,4 +18,8 @@ header {
     transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -webkit-transition: all .5s ease-in-out;
+}
+
+.bg-color-name-title {
+    background-color: #676767;
 }
