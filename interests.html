@@ -13,12 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
         type="text/css" />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
 </head>
 
 <body>
@@ -65,6 +59,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </header>
     <section class="container-fluid">
         <div class="row">
@@ -227,20 +222,49 @@
         </div>
 
     </footer>
-</footer>
-<script>
-    function initMap(){
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 3,
-            center: {
-                lat: 46.619261,
-                lng: -33.134766
-            }
-        });
-    }
-</script>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2p17LTXhon7DOPYePiQwI2MK2_CbHh7g&callback=initMap"></script>
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 3,
+                center: {
+                    lat: 46.619261,
+                    lng: -33.134766
+                },
+            });
+
+            const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const locations = [{
+                    lat: 40.785091,
+                    lng: -73.968285
+                },
+                {
+                    lat: 41.084045,
+                    lng: -73.874245
+                },
+                {
+                    lat: 40.754932,
+                    lng: -73.984016
+                },
+            ];
+
+            const markers = locations.map((location, i) => {
+                return new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    title: labels[i % labels.length],
+                });
+            });
+
+            new markerClusterer.MarkerClusterer({
+                map,
+                markers,
+            });
+        }
+    </script>
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2p17LTXhon7DOPYePiQwI2MK2_CbHh7g&callback=initMap&libraries=places">
+    </script>
 </body>
 
 </html>
