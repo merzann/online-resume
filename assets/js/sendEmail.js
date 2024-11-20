@@ -12,7 +12,7 @@ function sendMail(contactForm) {
     }
 
     // Send email with reCAPTCHA token included
-    emailjs.send("service_ffyg3bn", "template_mbn3ioe", {
+    emailjs.send("service_ffyg3bn", "template_10wsfda", {
         "from_name": contactForm.name.value,
         "from_email": contactForm.emailaddress.value,
         "message": contactForm.projectsummary.value,
